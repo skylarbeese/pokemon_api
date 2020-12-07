@@ -11,10 +11,11 @@
     <section>
       <button class="create"> create your own pokemon </button>
       <button class="first"> first gen </button>
+      <div class="con">
         <div class="poke-div">
             
         </div>
-        
+       </div> 
     </section>
     <footer>
       <a href="https://github.com/skylarbeese/pokemon_api.git"><h1>github</h1></a>
@@ -85,9 +86,10 @@
 .card .back {
 	top: 0;
 	left: 0;
-  justify-content:center ;
+  justify-content: center;
   align-items: center;
   display: flex;
+  flex-direction: column;
   text-align: center;
 	position: absolute;
   width: 300px;
@@ -137,9 +139,11 @@
   width: 300px;
   height: 100px; 
   bottom: 0;
- background-color: cadetblue;
+  color:burlywood;
+  font-size: 1rem;
  z-index: 1;
 }
+
 /*.text-front{
   text-align: center;
   justify-content:center ;
@@ -180,6 +184,14 @@ img.poke-img{
   width: 200px;
   transition: .6s;
 
+}
+.poke-type{
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  padding: 10px 20px;
+  border-radius: 30px;
+  background-color: rgb(206, 206, 226);
 }
 .front:hover img.poke-img{
   transform: scale(1.1);

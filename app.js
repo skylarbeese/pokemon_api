@@ -1,6 +1,26 @@
 const pokenDiv = document.querySelector('.poke-div')
-const first = document.querySelector('.first')
+const first1 = document.querySelector('.first')
+let frontt = document.querySelector('.front')
+let con = document.querySelector('.con')
 
+const colors = {
+  fire: 'red',
+  grass: 'green',
+  water: 'blue',
+  electric: 'yellow',
+  ground: 'brown',
+  rock: 'brown',
+  fairy: 'pink',
+  poison: 'pink',
+  dragon: 'gray',
+  bug: 'green',
+  psychic: 'pink',
+  flying: 'white',
+  fighting: 'brown',
+  normal: 'white'
+}
+
+const main = Object.keys(colors)
 
 async function getApi(url) {
   try{
@@ -16,19 +36,16 @@ async function getApi(url) {
 
 function onload() {
 
-   getApi('https://pokeapi.co/api/v2/pokemon/?limit=400&offset=0').then
+   getApi('https://pokeapi.co/api/v2/pokemon/?limit=20&offset=0').then
    (async (data) => {
      for(const pokemon of data.results) {
        await getApi(pokemon.url).then((pokeData) => {
           populatePoke(pokeData)
-        //  const maleCharactors = pokemon.filter(person => person.id === 1 && person.id === 3)
-        /*  first.addEventListener('click', () => {
-            populatePoke(maleCharactors)
-           }) */
+        
        })
      }
    })
-}
+
 
 
 /*async function onLoad() {
@@ -44,35 +61,36 @@ function onload() {
 
 
 
-    
 
 
    
 
 function populatePoke(pokeCards) {
- 
+  
+  
+ //removeChildren(con)
+
  let cardDiv = document.createElement('div') //front
  let card =  document.createElement('div')
- //let front = document.createElement('div') //front
+ let front = document.createElement('div') //front
  let back = document.createElement('div') //back
- //let grad = document.createElement('div') //fornot
- //let pokeNum = document.createElement('h2') //front
- //let pokeName = document.createElement('h2') //front
- //let pokeImg = document.createElement('img') //front
-// let imgBox = document.createElement('div') //front
- //pokeImg.src = `../pokemon.json/images/${pokeNumber(pokeCards)}.png` //front
+ let grad = document.createElement('div') //fornot
+ let pokeNum = document.createElement('h2') //front
+ let pokeName = document.createElement('h2') //front
+ let pokeImg = document.createElement('img') //front
+ let imgBox = document.createElement('div') //front
+ pokeImg.src = `../pokemon.json/images/${pokeNumber(pokeCards)}.png` //front
+ //let PokeNum = document.createElement('h2')
+ //let pokeMoves = document.createElement('h2') //back
+ let frontSlide = document.createElement('div') //front
+ let sliderText = document.createElement('div') //front
+ let textFront = document.createElement('div') //front
+ let name = document.createElement('h2') //front
 
- let pokeMoves = document.createElement('h2') //back
- //let frontSlide = document.createElement('div') //front
- //let sliderText = document.createElement('div') //front
- //let textFront = document.createElement('div') //front
- //let name = document.createElement('h2') //front
+ let type = document.createElement('h2')
+ type.setAttribute('class', 'type')
 
- //let type = document.createElement('h2')
- //type.setAttribute('class', 'type')
 
- //let type1 = document.createElement('h2')
- //type1.setAttribute('class', 'type')
 
  card.addEventListener('click', function() {
  // console.log("woring")
@@ -87,59 +105,99 @@ function populatePoke(pokeCards) {
     
   } 
  })
- //name.setAttribute('class', 'name') //front
-// frontSlide.setAttribute('class', 'slide-card') //front
-//pokeImg.setAttribute('class', 'poke-img') //front
-//textFront.setAttribute('class', 'text-front')  //front
-pokeMoves.setAttribute('class', 'moves') //back
-//pokeName.textContent = pokeCards.name //front
-//type.textContent = pokeCards.types[0].type.name
-//type1.textContent = pokeCards.types[1].type.name
-// pokeNum.textContent = pokeCards.id //back
- //name.textContent = pokeCards.name //front
- pokeMoves.textContent = `${pokeCards.moves.length}moves`//back
 
- pokeMoves.addEventListener('click', () => {
-    
-    back.appendChild(getMoves(pokeCards))
 
- })  //back
+ name.setAttribute('class', 'name') //front
+ frontSlide.setAttribute('class', 'slide-card') //front
+pokeImg.setAttribute('class', 'poke-img') //front
+textFront.setAttribute('class', 'text-front')  //front
+//pokeMoves.setAttribute('class', 'moves') //back
+pokeName.textContent = `${pokeCards.name}` //front
 
+const pokeTypes = pokeCards.types.map(el => el.type.name)
+
+const typeP = main.find(type => pokeTypes.indexOf(type) === 0)
+const color = colors[typeP]
+let typeDiv = document.createElement('div')
+typeDiv.setAttribute('class', 'poke-type')
+let tey = document.createElement('h2')
+tey.setAttribute('child', "type-text")
+tey.textContent = "type:"
+type.textContent = `${pokeTypes}`
+
+
+
+
+ pokeNum.textContent = `#${pokeCards.id}` //back
+ name.textContent = pokeCards.name //front
+ //pokeMoves.textContent = `${pokeCards.moves.length}moves`//back
+
+//back.addEventListener('click', () => getMoves(pokeCards))
+
+
+ 
+   
 
  cardDiv.setAttribute('class', 'card-div') //front
  card.setAttribute('class', 'card')
-// front.setAttribute('class', 'front') //front
-// back.setAttribute('class', 'back') //back
-// grad.setAttribute('class', 'grad') //front
-// sliderText.setAttribute('class', 'text-div') //front
-// imgBox.setAttribute('class', 'box')  //front
- card.appendChild(cardFrontPop(pokeCards))
-// front.appendChild(frontSlide)  ///front
-// sliderText.appendChild(textFront)  //front
-// frontSlide.appendChild(grad) //front
- //frontSlide.appendChild(sliderText) //front
- //textFront.appendChild(pokeNum)  //front
- textFront.appendChild(type)
- //textFront.appendChild(type1)
-// front.appendChild(name)  //front
- //textFront.appendChild(pokeName) //front
+ front.setAttribute('class', 'front') //front
+ back.setAttribute('class', 'back') //back
+ grad.setAttribute('class', 'grad') //front
+ sliderText.setAttribute('class', 'text-div') //front
+ imgBox.setAttribute('class', 'box')  //front
+ card.appendChild(front)
+ front.appendChild(frontSlide)  ///front
+ sliderText.appendChild(textFront)  //front
+ frontSlide.appendChild(grad) //front
+ frontSlide.appendChild(sliderText) //front
+ textFront.appendChild(pokeNum)  //front
+
+
+
+ back.appendChild(name)  //back
+ back.appendChild(pokeNum)
+ back.appendChild(typeDiv)
+typeDiv.appendChild(tey)
+ typeDiv.appendChild(type)
+
+ textFront.appendChild(pokeName) //front
 
 frontSlide.appendChild(grad) //front
-//front.appendChild(pokeType(pokeCards))
-//front.appendChild(imgBox) //front
-//imgBox.appendChild(pokeImg) //front
+
+front.appendChild(imgBox) //front
+imgBox.appendChild(pokeImg) //front
  card.appendChild(back)
- back.appendChild(pokeMoves) //back
+ //back.appendChild(pokeMoves) //back
 
  cardDiv.appendChild(card)
  pokenDiv.appendChild(card)
-
-
  
+ front.style.backgroundColor = color
 
 
- 
+
+ //pokeCardType(pokeCards)
 }
+/*
+function pokeCardType(pokeT) {
+  const pokee = pokeT.types.filter(el => el.type.name === "fire")
+
+  first1.addEventListener('click', (event) => {
+  
+    populatePoke(pokee) 
+   
+  })
+}
+*/
+
+}
+/*function fireType(pokeFire) {
+  const fire = pokeFire.types.filter(el => el.type.name === "fire")
+  first1.addEventListener('click', () => {
+    console.log(fire)
+  })
+} */
+
 
 /*function cardBackPop(pokemon) {
   let back = document.createElement('div')
@@ -158,7 +216,7 @@ frontSlide.appendChild(grad) //front
  back.appendChild(pokeName1)
  
 } */
-
+/*
 function cardFrontPop(pokemon) {
   let front = document.createElement('div')
   front.setAttribute('class', 'front')
@@ -191,24 +249,36 @@ function cardFrontPop(pokemon) {
    //frontSlide
   imgBox.appendChild(pokeImg) //imgBox
   return cardFrontPop
-}
+} 
+*/
 
+/*function getType(pokemon2){
+  let po = document.createElement('p')
+  po.textContent = "hi"
+//  pokenDiv.appendChild(po)
+ /*   return pokemon.map(poke => {
+    let pokeType = poke.types[1] ? `${poke.types[1]}` : ``
+return {
+     
+        types:`${pokeType}`
+     
+    } 
+  })  */
+//} 
+function getMoves(pokemon) {
 
-
-//function getMoves(pokeM) {
- // document.body.appendChild
- // let move = document.createElement('p')
- // move.setAttribute('class', 'move')
  
-//  const moveUrl = pokeM[13].move.url
-/*  getApi(moveUrl).then((data) => {
-    console.log(data.type.name)
+ // const moveUrl = pokemon.id
+  //console.log(moveUrl)
+  //getApi(moveUrl).then((data) => data.type.name)
     
-  }) */
-
+  //}) 
+ // let type = document.createElement('h2')
+ //type.setAttribute('class', 'type')
+ // type.textContent = pokeM.types[0].type.name
  
-    //console.log(pokeM)
-//}
+   // console.log(pokeM)
+}
 
 
 function pokeNumber(pokemon) {
@@ -222,30 +292,29 @@ function pokeNumber(pokemon) {
   }
 }
 
-/*function pokeType(pokemon) {
-  if(pokemon.types < 0) {
-     let type1 = document.createElement('h2')
-     type.textContent = pokeCards.types[1].type.name
-     type1.setAttribute('class', 'type1')
-  } else {
-     return 'none'
-  }
-} */
+
+
 
 const newPokeBtn = document.querySelector('.create');
 newPokeBtn.addEventListener('click', () => {
   let pokeName = prompt('want is your name');
   
-  let newPokemon = new pokemon(pokeName, 200, 400, ['sleep', 'code', 'eat']);
-  console.log(newPokemon)
+  let newPokemon = new pokemon(pokeName, 200, 400, ['sleep', 'code', 'eat'], "fire");
+ // console.log(newPokemon)
   populatePoke(newPokemon)
 })
 
-function pokemon(name, weight, height, ability) {
+function pokemon(name, weight, height, ability, type) {
   this.name = name,
   this.weight = weight,
   this.height = height,
-  this.ability = ability
-
+  this.ability = ability,
+  this.type = type
 }
+
+function removeChildren(container) {
+  while(container.firstChild) {
+      container.removeChild(container.firstChild)
+  }
+} 
 onload()
