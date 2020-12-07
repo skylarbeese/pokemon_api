@@ -41,7 +41,7 @@ function onload() {
      for(const pokemon of data.results) {
        await getApi(pokemon.url).then((pokeData) => {
           populatePoke(pokeData)
-        
+          pop(pokeData)
        })
      }
    })
@@ -57,10 +57,33 @@ function onload() {
 
 
     
+
+const newPokeBtn = document.querySelector('.create');
+newPokeBtn.addEventListener('click', () => {
+  let pokeName = prompt('want is your name');
   
+  let newPokemon = new pokemon(pokeName, 200, 400, ['sleep', 'code', 'eat'], "fire");
+ // console.log(newPokemon)
+    populatePoke(newPokemon)
+})
+
+function pokemon(name, weight, height, ability, type) {
+  this.name = name,
+  this.weight = weight,
+  this.height = height,
+  this.ability = ability,
+  this.type = type
+}
 
 
+function pop(poke) {
+  const pokeFire = poke.types.filter(person => person.type.name === "fire")
 
+  first1.addEventListener('click', (event) => {
+    console.log(populatePoke(pokeFire))
+    populatePoke(pokeFire) 
+})
+}
 
 
    
@@ -123,7 +146,7 @@ typeDiv.setAttribute('class', 'poke-type')
 let tey = document.createElement('h2')
 tey.setAttribute('child', "type-text")
 tey.textContent = "type:"
-type.textContent = `${pokeTypes}`
+//type.textContent = `${pokeTypes}`
 
 
 
@@ -174,8 +197,8 @@ imgBox.appendChild(pokeImg) //front
  
  front.style.backgroundColor = color
 
-
-
+ //const pokee = pokeCards.types.filter(el => el.type.name === "fire")
+ //console.log(populatePoke(pokee))
  //pokeCardType(pokeCards)
 }
 /*
@@ -295,26 +318,10 @@ function pokeNumber(pokemon) {
 
 
 
-const newPokeBtn = document.querySelector('.create');
-newPokeBtn.addEventListener('click', () => {
-  let pokeName = prompt('want is your name');
-  
-  let newPokemon = new pokemon(pokeName, 200, 400, ['sleep', 'code', 'eat'], "fire");
- // console.log(newPokemon)
-  populatePoke(newPokemon)
-})
-
-function pokemon(name, weight, height, ability, type) {
-  this.name = name,
-  this.weight = weight,
-  this.height = height,
-  this.ability = ability,
-  this.type = type
-}
-
 function removeChildren(container) {
   while(container.firstChild) {
       container.removeChild(container.firstChild)
   }
 } 
+
 onload()
