@@ -36,12 +36,12 @@ async function getApi(url) {
 
 function onload() {
 
-   getApi('https://pokeapi.co/api/v2/pokemon/?limit=20&offset=0').then
+   getApi('https://pokeapi.co/api/v2/pokemon/?limit=25&offset=0').then
    (async (data) => {
      for(const pokemon of data.results) {
        await getApi(pokemon.url).then((pokeData) => {
           populatePoke(pokeData)
-          pop(pokeData)
+          //pokeType(pokeData)
        })
      }
    })
@@ -75,23 +75,11 @@ function pokemon(name, weight, height, ability, type) {
   this.type = type
 }
 
-
-function pop(poke) {
-  const pokeFire = poke.types.filter(person => person.type.name === "fire")
-
-  first1.addEventListener('click', (event) => {
-    console.log(populatePoke(pokeFire))
-    populatePoke(pokeFire) 
-})
-}
-
-
    
 
 function populatePoke(pokeCards) {
-  
-  
- //removeChildren(con)
+
+
 
  let cardDiv = document.createElement('div') //front
  let card =  document.createElement('div')
@@ -141,13 +129,21 @@ const pokeTypes = pokeCards.types.map(el => el.type.name)
 
 const typeP = main.find(type => pokeTypes.indexOf(type) === 0)
 const color = colors[typeP]
+const type1 = `${pokeTypes}`
+
 let typeDiv = document.createElement('div')
 typeDiv.setAttribute('class', 'poke-type')
 let tey = document.createElement('h2')
 tey.setAttribute('child', "type-text")
 tey.textContent = "type:"
-//type.textContent = `${pokeTypes}`
+type.textContent = type1
 
+
+
+first1.addEventListener('click', (event) => {
+//  console.log(populatePoke(pokeFire))
+  populatePoke(pokeFire) 
+})
 
 
 
@@ -180,7 +176,7 @@ tey.textContent = "type:"
  back.appendChild(name)  //back
  back.appendChild(pokeNum)
  back.appendChild(typeDiv)
-typeDiv.appendChild(tey)
+ typeDiv.appendChild(tey)
  typeDiv.appendChild(type)
 
  textFront.appendChild(pokeName) //front
@@ -197,29 +193,10 @@ imgBox.appendChild(pokeImg) //front
  
  front.style.backgroundColor = color
 
- //const pokee = pokeCards.types.filter(el => el.type.name === "fire")
- //console.log(populatePoke(pokee))
- //pokeCardType(pokeCards)
-}
-/*
-function pokeCardType(pokeT) {
-  const pokee = pokeT.types.filter(el => el.type.name === "fire")
-
-  first1.addEventListener('click', (event) => {
-  
-    populatePoke(pokee) 
-   
-  })
-}
-*/
+ 
 
 }
-/*function fireType(pokeFire) {
-  const fire = pokeFire.types.filter(el => el.type.name === "fire")
-  first1.addEventListener('click', () => {
-    console.log(fire)
-  })
-} */
+
 
 
 /*function cardBackPop(pokemon) {
@@ -317,11 +294,7 @@ function pokeNumber(pokemon) {
 
 
 
-
-function removeChildren(container) {
-  while(container.firstChild) {
-      container.removeChild(container.firstChild)
-  }
-} 
+}
+ 
 
 onload()

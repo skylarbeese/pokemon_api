@@ -9,9 +9,13 @@
 </head>
 <body>
     <section>
+      <div class="header">
+      <h1> poke-dex </h1>
+      </div>
       <button class="create"> create your own pokemon </button>
       <button class="first"> first gen </button>
       <div class="con">
+       
         <div class="poke-div">
             
         </div>
@@ -36,6 +40,20 @@
   flex-direction: column;
 
  }
+ .header{
+   width: 100%;
+   height: 130px;
+   background-color: black;
+   text-align: center;
+  justify-content:center;
+  align-items: center;
+  display: flex;
+ }
+ .header h1{
+   color: yellow;
+   font-size: 4rem;
+
+ }
  .poke-div{
    justify-content: center;
    justify-content:center;
@@ -43,7 +61,8 @@
 
    align-items: center;
    display: grid;
-   grid-template-columns: 400px 400px 400px;
+   grid-template-columns: 350px 350px 350px;
+   grid-row-gap: 20px;
    grid-template-rows: auto;
    margin: 10px;
  }
