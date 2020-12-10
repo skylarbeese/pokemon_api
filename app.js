@@ -86,7 +86,7 @@ function populatePoke(pokeCards) {
  let pokeName = document.createElement('h2') //front
  let pokeImg = document.createElement('img') //front
  let imgBox = document.createElement('div') //front
- pokeImg.src = `../pokemon.json/images/${pokeNumber(pokeCards)}.png` //front
+ pokeImg.src = `../im\/images/${pokeNumber(pokeCards)}.png` //front
  //let PokeNum = document.createElement('h2')
  //let pokeMoves = document.createElement('h2') //back
  let frontSlide = document.createElement('div') //front
