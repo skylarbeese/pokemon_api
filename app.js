@@ -36,7 +36,7 @@ async function getApi(url) {
 
 function onload() {
 
-   getApi('https://pokeapi.co/api/v2/pokemon/?limit=25&offset=0').then
+   getApi('https://pokeapi.co/api/v2/pokemon/?limit=200&offset=0').then
    (async (data) => {
      for(const pokemon of data.results) {
        await getApi(pokemon.url).then((pokeData) => {
@@ -48,12 +48,7 @@ function onload() {
 
 
 
-/*async function onLoad() {
-  const responce = await fetch('https://pokeapi.co/api/v2/pokemon/')
-  const data = await responce.json()
-  populatePoke(data)
-}
- */
+
 
 
     
@@ -199,58 +194,6 @@ imgBox.appendChild(pokeImg) //front
 
 
 
-/*function cardBackPop(pokemon) {
-  let back = document.createElement('div')
-  back.setAttribute('class', 'back')
-  let pokeNum = document.createElement('h2')
-  let pokeName1 = document.createElement('h2')
-  let pokeMoves = document.createElement('h2')
-  pokeMoves.setAttribute('class', 'moves')
-  pokeName1.textContent = pokemon.name
-  pokeNum.textContent = pokemon.id
-  pokeMoves.textContent = `${pokemon.moves.length}moves`
-  pokeMoves.addEventListener('click', () => {
-    getMoves(pokemon.moves)
- })
- back.appendChild(pokeMoves)
- back.appendChild(pokeName1)
- 
-} */
-/*
-function cardFrontPop(pokemon) {
-  let front = document.createElement('div')
-  front.setAttribute('class', 'front')
-  let frontSlide = document.createElement('div')
-  frontSlide.setAttribute('class', 'slide-card')
-  let pokeImg = document.createElement('img')
-  pokeImg.src = `../pokemon.json/images/${pokeNumber(pokemon)}.png`
-  pokeImg.setAttribute('class', 'poke-img')
-  let imgBox = document.createElement('div')
-  imgBox.setAttribute('class', 'box')
-  let grad = document.createElement('div')
-  grad.setAttribute('class', 'grad')
-  let textFront = document.createElement('div')
-  textFront.setAttribute('class', 'text-front')
-  let pokeName = document.createElement('h2')
-  pokeName.textContent = pokemon.name
-  let name = document.createElement('h2')
-  name.setAttribute('class', 'name')
-  name.textContent = pokemon.name // name
-  let sliderText = document.createElement('div')
-  sliderText.setAttribute('class', 'text-div') 
-
-  front.appendChild(imgBox) // frony
-  front.appendChild(name)
-  front.appendChild(frontSlide)
-  frontSlide.appendChild(grad) //grad
-  frontSlide.appendChild(sliderText) //sliderText
-  sliderText.appendChild(textFront)
-  textFront.appendChild(pokeName)
-   //frontSlide
-  imgBox.appendChild(pokeImg) //imgBox
-  return cardFrontPop
-} 
-*/
 
 /*function getType(pokemon2){
   let po = document.createElement('p')
