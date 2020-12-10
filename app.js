@@ -1,23 +1,24 @@
 const pokenDiv = document.querySelector('.poke-div')
-const first1 = document.querySelector('.first')
+//const first1 = document.querySelector('.first')
 let frontt = document.querySelector('.front')
 let con = document.querySelector('.con')
 
 const colors = {
-  fire: 'red',
-  grass: 'green',
-  water: 'blue',
-  electric: 'yellow',
-  ground: 'brown',
-  rock: 'brown',
-  fairy: 'pink',
-  poison: 'pink',
-  dragon: 'gray',
-  bug: 'green',
-  psychic: 'pink',
-  flying: 'white',
-  fighting: 'brown',
-  normal: 'white'
+  fire: '#F55447',
+  grass: '#43F040',
+  water: '#5038F5',
+  electric: '#F7E202',
+  ground: '#A85F3B',
+  rock: '#A8926C',
+  fairy: '#FA9CE7',
+  poison: '#D95B87',
+  dragon: '#923D5B',
+  bug: '#BBFA47',
+  psychic: '#D9B9DE',
+  flying: '#D4DBF4',
+  fighting: '#E0C390',
+  normal: '#F0E8F1',
+  ice: '#A1E4F0'
 }
 
 const main = Object.keys(colors)
@@ -135,10 +136,10 @@ type.textContent = type1
 
 
 
-first1.addEventListener('click', (event) => {
+//first1.addEventListener('click', (event) => {
 //  console.log(populatePoke(pokeFire))
-  populatePoke(pokeFire) 
-})
+  //populatePoke(pokeFire) 
+//})
 
 
 
