@@ -18,7 +18,9 @@ const colors = {
   flying: '#D4DBF4',
   fighting: '#E0C390',
   normal: '#F0E8F1',
-  ice: '#A1E4F0'
+  ice: '#A1E4F0',
+  dark: '#000000',
+  ghost: '#DAD7EC'
 }
 
 const main = Object.keys(colors)
