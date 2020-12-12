@@ -39,7 +39,7 @@ async function getApi(url) {
 
 function onload() {
 
-   getApi('https://pokeapi.co/api/v2/pokemon/?limit=200&offset=0').then
+   getApi('https://pokeapi.co/api/v2/pokemon/?limit=20&offset=0').then
    (async (data) => {
      for(const pokemon of data.results) {
        await getApi(pokemon.url).then((pokeData) => {
@@ -56,22 +56,24 @@ function onload() {
 
     
 
+
+
+function pokemon(name, type) {
+  this.name = name
+  this.type.name = type
+  this.id = 21
+}
+
+
 const newPokeBtn = document.querySelector('.create');
 newPokeBtn.addEventListener('click', () => {
   let pokeName = prompt('want is your name');
   
-  let newPokemon = new pokemon(pokeName, 200, 400, ['sleep', 'code', 'eat'], "fire");
- // console.log(newPokemon)
+  let newPokemon = new pokemon(pokeName, [{0: "fire"}, {1: "water"}]);
+  console.log(newPokemon)
     populatePoke(newPokemon)
 })
 
-function pokemon(name, weight, height, ability, type) {
-  this.name = name,
-  this.weight = weight,
-  this.height = height,
-  this.ability = ability,
-  this.type = type
-}
 
    
 
