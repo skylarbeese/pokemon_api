@@ -60,8 +60,8 @@ function onload() {
 
 function pokemon(name, type) {
   this.name = name
-  this.type.name = type
-  this.id = 21
+  this.types = type
+  
 }
 
 
@@ -69,7 +69,14 @@ const newPokeBtn = document.querySelector('.create');
 newPokeBtn.addEventListener('click', () => {
   let pokeName = prompt('want is your name');
   
-  let newPokemon = new pokemon(pokeName, [{0: "fire"},{1:"water"}]);
+  let newPokemon = new pokemon(pokeName, [
+    {type: {
+       name: "fire"}
+    },{ type:
+      {name: "flying"}
+
+    }
+  ]);
   console.log(newPokemon)
     populatePoke(newPokemon)
 })
