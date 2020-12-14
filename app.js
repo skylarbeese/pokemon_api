@@ -39,7 +39,7 @@ async function getApi(url) {
 
 function onload() {
 
-   getApi('https://pokeapi.co/api/v2/pokemon/?limit=20&offset=0').then
+   getApi('https://pokeapi.co/api/v2/pokemon/?limit=25&offset=0').then
    (async (data) => {
      for(const pokemon of data.results) {
        await getApi(pokemon.url).then((pokeData) => {
@@ -69,7 +69,7 @@ const newPokeBtn = document.querySelector('.create');
 newPokeBtn.addEventListener('click', () => {
   let pokeName = prompt('want is your name');
   
-  let newPokemon = new pokemon(pokeName, [{0: "fire"}, {1: "water"}]);
+  let newPokemon = new pokemon(pokeName, [{0: "fire"},{1:"water"}]);
   console.log(newPokemon)
     populatePoke(newPokemon)
 })
