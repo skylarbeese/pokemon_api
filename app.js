@@ -2,6 +2,9 @@ const pokenDiv = document.querySelector('.poke-div')
 //const first1 = document.querySelector('.first')
 let frontt = document.querySelector('.front')
 let con = document.querySelector('.con')
+const searchBar = document.querySelector('.search')
+
+
 
 const colors = {
   fire: '#F55447',
@@ -39,22 +42,19 @@ async function getApi(url) {
 
 function onload() {
 
-   getApi('https://pokeapi.co/api/v2/pokemon/?limit=25&offset=0').then
+   getApi('https://pokeapi.co/api/v2/pokemon/?limit=201&offset=0').then
    (async (data) => {
      for(const pokemon of data.results) {
        await getApi(pokemon.url).then((pokeData) => {
           populatePoke(pokeData)
+          console.log(pokeC)
+         
           //pokeType(pokeData)
        })
      }
    })
 
 
-
-
-
-
-    
 
 
 
@@ -200,7 +200,7 @@ imgBox.appendChild(pokeImg) //front
  
  front.style.backgroundColor = color
 
- 
+
 
 }
 
